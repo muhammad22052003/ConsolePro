@@ -1,0 +1,23 @@
+﻿version: '3.1'
+
+services:
+  app:
+        container_name: mywebproject-cont
+        build:
+            context: .
+            dockerfile: Dockerfile
+  db:
+    container_name: mysql_server
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: itransition_task4
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
