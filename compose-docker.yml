@@ -6,6 +6,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        depends_on:
+            - mysql_server
   db:
     container_name: mysql_server
     image: mysql
